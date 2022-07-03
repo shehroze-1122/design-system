@@ -1,12 +1,13 @@
 import styled from "styled-components";
+import { useSpring, animated } from "react-spring";
 import { typeScale } from "../utils";
 import { illustrations } from "../assets";
 import { PrimaryButton } from "./buttons";
 import { CloseIcon } from "../assets";
 
 const ModalWrapper = styled.div`
-  width: 70%;
-  height: 100%;
+  width: 700px;
+  height: 550px;
   box-shadow: 0px 5px 16px rgba(0, 0, 0, 0.2);
   background-color: ${(props) => props.theme.formElementBackground};
   color: ${(props) => props.theme.textOnFormElementBackground};
@@ -38,23 +39,33 @@ const CloseModalButton = styled.button`
   padding: 0;
   margin: 0;
 `;
-const SignUpModal = ({ isDarkTheme }) => {
+const SignUpModal = ({ isDarkTheme, showModal, setShowModal, theme }) => {
+  console.log(theme);
+  const animation = useSpring({
+    opacity: showModal ? 1 : 0,
+    transform: showModal ? `translateY(0)` : `translateY(-200%)`,
+  });
   return (
-    <ModalWrapper>
-      <img
-        src={illustrations.SignUp}
-        alt="Sign up for an account"
-        aria-hidden="true"
-      />
-      <SignUpHeader>Sign Up</SignUpHeader>
-      <SignUpText>
-        Sign up today to get access to all of our content and features!
-      </SignUpText>
-      <PrimaryButton>Sign Up!</PrimaryButton>
-      <CloseModalButton aria-label="Close Modal">
-        <CloseIcon isDarkTheme={isDarkTheme} />
-      </CloseModalButton>
-    </ModalWrapper>
+    <animated.div style={animation}>
+      <ModalWrapper>
+        <img
+          src={illustrations.SignUp}
+          alt="Sign up for an account"
+          aria-hidden="true"
+        />
+        <SignUpHeader>Sign Up</SignUpHeader>
+        <SignUpText>
+          Sign up today to get access to all of our content and features!
+        </SignUpText>
+        <PrimaryButton>Sign Up!</PrimaryButton>
+        <CloseModalButton
+          aria-label="Close Modal"
+          onClick={setShowModal.bind(this, false)}
+        >
+          <CloseIcon isDarkTheme={isDarkTheme} />
+        </CloseModalButton>
+      </ModalWrapper>
+    </animated.div>
   );
 };
 

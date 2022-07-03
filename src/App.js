@@ -10,6 +10,8 @@ import { ThemeProvider } from "styled-components";
 
 const App = () => {
   const [isDarkTheme, setDarkTheme] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <ThemeProvider theme={isDarkTheme ? darkTheme : defaultTheme}>
       <div className="App">
@@ -25,6 +27,12 @@ const App = () => {
         >
           Default Theme
         </button>
+        <button
+          style={{ margin: "20px", padding: "8px", background: "none" }}
+          onClick={() => setShowModal(!showModal)}
+        >
+          {showModal ? "Hide Modal" : "Show Modal"}
+        </button>
         <div
           style={{
             backgroundColor: isDarkTheme ? "#282828" : "aliceblue",
@@ -36,7 +44,11 @@ const App = () => {
             flexWrap: "wrap",
           }}
         >
-          <SignUpModal isDarkTheme={isDarkTheme} />
+          <SignUpModal
+            isDarkTheme={isDarkTheme}
+            showModal={showModal}
+            setShowModal={setShowModal}
+          />
 
           {/* <div>
             <PrimaryButton modifiers={["small"]}>Button</PrimaryButton>

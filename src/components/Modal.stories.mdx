@@ -1,0 +1,39 @@
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { boolean } from "@storybook/addon-knobs";
+import Modal from "./Modal";
+
+<Meta
+  title={"Design System/Modal"}
+  component={Modal}
+  argTypes={{
+    showModal: {
+      control: { type: "boolean" },
+    },
+    isDarkTheme: {
+      control: { type: "boolean" },
+    },
+  }}
+/>
+
+export const ModalStory = ({ isDarkTheme, showModal, ...args }) => (
+  <Modal
+    isDarkTheme={isDarkTheme}
+    showModal={showModal}
+    {...args}
+    setShowModal={() => {}}
+  />
+);
+
+# Modal
+
+Buttons are used to trigger actions within an application.
+
+## Sign Up modal
+
+Modals are used to prompt user for some inputs or to alert about some action
+
+<Preview withToolbar>
+  <Story name="Sign Up Modal" args={{ showModal: true, isDarkTheme: false }}>
+    {ModalStory.bind({})}
+  </Story>
+</Preview>

@@ -4,7 +4,7 @@ module.exports = {
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-actions",
-    "@storybook/addon-knobs",
+    "@storybook/addon-controls",
     "@storybook/addon-a11y",
     {
       name: "@storybook/addon-docs",

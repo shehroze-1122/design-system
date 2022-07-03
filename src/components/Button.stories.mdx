@@ -1,9 +1,22 @@
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { PrimaryButton, SecondaryButton, TertiaryButton } from "./buttons";
 import { action } from "@storybook/addon-actions";
-import { boolean } from "@storybook/addon-knobs";
 
-<Meta title="Design System/Buttons" component={PrimaryButton} />
+<Meta
+  title="Design System/Buttons"
+  component={PrimaryButton}
+  argTypes={{
+    disabled: {
+      control: { type: "boolean" },
+    },
+  }}
+/>
+
+export const Button = ({ disabled, text, ...args }) => (
+  <PrimaryButton {...args} disabled={disabled}>
+    {text}
+  </PrimaryButton>
+);
 
 # Buttons
 
@@ -18,13 +31,8 @@ Buttons are used to trigger internal actions within your web applications.
 Primary buttons are used as a call to action and indicate the most important action on a page.
 
 <Preview withToolbar>
-  <Story name="primary">
-    <PrimaryButton
-      onClick={action("Button Clicked")}
-      disabled={boolean("Disabled", false)}
-    >
-      Hello world
-    </PrimaryButton>
+  <Story name="primary" args={{ disabled: false, text: "Hello world" }}>
+    {Button.bind({})}
   </Story>
 </Preview>
 

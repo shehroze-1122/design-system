@@ -1,6 +1,5 @@
 import { ThemeProvider } from "styled-components";
 import { defaultTheme, darkTheme } from "../src/utils";
-import { withKnobs } from "@storybook/addon-knobs";
 import { withA11y } from "@storybook/addon-a11y";
 
 export const parameters = {
@@ -35,6 +34,5 @@ export const decorators = [
       </ThemeProvider>
     );
   },
-  withKnobs,
   withA11y,
 ];

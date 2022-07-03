@@ -30,8 +30,4 @@ export default create({
   inputBorder: "silver",
   inputTextColor: "black",
   inputBorderRadius: 4,
-
-  brandTitle: "My custom storybook",
-  brandUrl: "https://example.com",
-  brandImage: "https://placehold.it/350x150",
 });
